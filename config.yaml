@@ -1,0 +1,11 @@
+general:
+  kiosk-mode: full
+  autofit: true
+  lxde: false
+  lxde-home: /home/pi
+  scale-factor: 4.0
+target:
+  login-method: anon
+  playlist: true
+  URL: http://192.168.6.10:3000/playlists/play/5
+  ignore-certificate-errors: false

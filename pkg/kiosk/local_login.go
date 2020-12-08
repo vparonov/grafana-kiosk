@@ -2,6 +2,7 @@ package kiosk
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -32,6 +33,8 @@ func GrafanaKioskLocal(cfg *Config) {
 		chromedp.Flag("disable-overlay-scrollbar", true),
 		chromedp.Flag("ignore-certificate-errors", cfg.Target.IgnoreCertificateErrors),
 		chromedp.Flag("test-type", cfg.Target.IgnoreCertificateErrors),
+		chromedp.Flag("high-dpi-support", "1"),
+		chromedp.Flag("force-device-scale-factor", fmt.Sprintf("%f", cfg.General.ScaleFactor)),
 		chromedp.UserDataDir(dir),
 	}
 

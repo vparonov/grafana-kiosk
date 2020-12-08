@@ -2,6 +2,7 @@ package kiosk
 
 import (
 	"context"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -30,6 +31,8 @@ func GrafanaKioskGCOM(cfg *Config) {
 		chromedp.Flag("disable-sync", true),
 		chromedp.Flag("disable-notifications", true),
 		chromedp.Flag("disable-overlay-scrollbar", true),
+		chromedp.Flag("high-dpi-support", "1"),
+		chromedp.Flag("force-device-scale-factor", fmt.Sprintf("%f", cfg.General.ScaleFactor)),
 		chromedp.UserDataDir(dir),
 	}
 

@@ -26,6 +26,7 @@ type Args struct {
 	URL                     string
 	Username                string
 	Password                string
+	ScaleFactor             float64
 }
 
 // ProcessArgs processes and handles CLI arguments
@@ -44,6 +45,7 @@ func ProcessArgs(cfg interface{}) Args {
 	f.BoolVar(&a.LXDEEnabled, "lxde", false, "Initialize LXDE for kiosk mode")
 	f.StringVar(&a.LXDEHome, "lxde-home", "/home/pi", "Path to home directory of LXDE user running X Server")
 	f.BoolVar(&a.IgnoreCertificateErrors, "ignore-certificate-errors", false, "Ignore SSL/TLS certificate error")
+	f.Float64Var(&a.ScaleFactor, "scale-factor", 1.0, "Chrome scale factor")
 
 	fu := f.Usage
 	f.Usage = func() {
@@ -94,6 +96,7 @@ func summary(cfg *kiosk.Config) {
 	log.Println("Password:", "*redacted*")
 	log.Println("IgnoreCertificateErrors:", cfg.Target.IgnoreCertificateErrors)
 	log.Println("IsPlayList:", cfg.Target.IsPlayList)
+	log.Println("ScaleFactor:", cfg.General.ScaleFactor)
 }
 
 func main() {
@@ -126,6 +129,7 @@ func main() {
 		cfg.General.LXDEEnabled = args.LXDEEnabled
 		cfg.General.LXDEHome = args.LXDEHome
 		cfg.General.Mode = args.Mode
+		cfg.General.ScaleFactor = args.ScaleFactor
 	}
 	summary(&cfg)
 	// make sure the url has content

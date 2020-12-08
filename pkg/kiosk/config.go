@@ -3,10 +3,11 @@ package kiosk
 // Config configuration for backend
 type Config struct {
 	General struct {
-		AutoFit     bool   `yaml:"autofit" env:"KIOSK_AUTOFIT" env-default:"true" env-description:"fit panels to screen"`
-		LXDEEnabled bool   `yaml:"lxde" env:"KIOSK_LXDE_ENABLED" env-default:"false" env-description:"initialize LXDE for kiosk mode"`
-		LXDEHome    string `yaml:"lxde-home" env:"KIOSK_MODE" env-default:"/home/pi" env-description:"path to home directory of LXDE user running X Server"`
-		Mode        string `yaml:"kiosk-mode" env:"KIOSK_MODE" env-default:"full" env-description:"[full|tv|disabled]"`
+		AutoFit     bool    `yaml:"autofit" env:"KIOSK_AUTOFIT" env-default:"true" env-description:"fit panels to screen"`
+		LXDEEnabled bool    `yaml:"lxde" env:"KIOSK_LXDE_ENABLED" env-default:"false" env-description:"initialize LXDE for kiosk mode"`
+		LXDEHome    string  `yaml:"lxde-home" env:"KIOSK_MODE" env-default:"/home/pi" env-description:"path to home directory of LXDE user running X Server"`
+		Mode        string  `yaml:"kiosk-mode" env:"KIOSK_MODE" env-default:"full" env-description:"[full|tv|disabled]"`
+		ScaleFactor float64 `yaml:"scale-factor" env:"KIOSK_SCALE_FACTOR" env-default:"1.0" env-description:"chrome scale factor"`
 	} `yaml:"general"`
 	Target struct {
 		IgnoreCertificateErrors bool   `yaml:"ignore-certificate-errors" env:"KIOSK_IGNORE_CERTIFICATE_ERRORS" env-description:"ignore SSL/TLS certificate errors" env-default:"false"`
